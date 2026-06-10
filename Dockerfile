@@ -23,9 +23,11 @@ COPY . .
 # Generate Prisma Client
 RUN npx prisma generate --schema=src/prisma/schema.prisma
 
+# Build the application for production
+RUN npm run build
+
 # Expose the port the app runs on
 EXPOSE 3000
 
-# The command to run the application in development mode
-CMD ["npm", "run", "start:dev"]
-
+# The command to run the application in production mode
+CMD ["npm", "run", "start:prod"]
